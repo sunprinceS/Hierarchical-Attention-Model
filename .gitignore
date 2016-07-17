@@ -8,6 +8,7 @@ luac.out
 
 # python compiled files
 *.pyc
+**/__pycache__
 
 # Object files
 *.o
@@ -43,7 +44,7 @@ luac.out
 *.hex
 
 # other stuff
-lib/
+#lib/
 data/
 
 
