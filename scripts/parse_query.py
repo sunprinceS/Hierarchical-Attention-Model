@@ -49,9 +49,9 @@ for q_dir in query_dir_ls:
     filename = os.path.basename(q)
     print('\nDependency parsing ' + filename)
     tokpath = os.path.join(q+'.toks')
-    parentpath = os.path.join(q_dir,'query_dparents')
+    parentpath = os.path.join(q_dir,'query_sep_dparents')
 
     tokenize_flag = '-tokenize - '
     cmd = ('java -cp %s DependencyParse -tokpath %s -parentpath %s -relpath .jizz %s < %s'
-        % (classpath, tokpath, parentpath, tokenize_flag, q))
+        % (classpath, tokpath, parentpath, tokenize_flag, os.path.join(q_dir,'queries_sep')))
     os.system(cmd)
