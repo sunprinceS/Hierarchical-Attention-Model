@@ -13,7 +13,7 @@ if [ ! -f $glove_dir/$glove_pre.$glove_dim.th ]; then
 		$glove_dir/$glove_pre.vocab $glove_dir/$glove_pre.$glove_dim.th
 fi
 
-cat $glove_dir/$glove_pre.$glove_dim.txt | cut -d ' ' -f 2- >> $glove_dir/$glove_pre.$glove_dim.yee
+cat $glove_dir/$glove_pre.$glove_dim.txt | cut -d ' ' -f 2- > $glove_dir/$glove_pre.$glove_dim.yee
 
 python3 scripts/preprocess-glove.py $glove_dir/$glove_pre.$glove_dim.yee $glove_dir/$glove_pre.$glove_dim.emb
 python3 scripts/preprocess-toefl.py
