@@ -2,7 +2,7 @@ Hierarchical Attention Model for Question Answering
 ===============================================
 
 An implementation of the Hierachical Attention Model and the baselines described in the paper 
-[Hierarchical Attention Model for Question Answering] by Juei-Yang Hsu, Wei Fang, Hung-Yi Lee,
+[Hierarchical Attention Model for Question Answering] by Wei Fang, Juei-Yang Hsu, Hung-Yi Lee,
 and Lin-Shan Lee.
 
 ## Requirements
@@ -14,12 +14,8 @@ and Lin-Shan Lee.
 - [optim](https://github.com/torch/optim)
 - [rnn](https://github.com/Element-Research/rnn)
 - Java >= 8 (for Stanford CoreNLP utilities)
-- Python >= 2.7
-- Python >= 3.5
-
-For GPU training please install:
-- [cutorch](https://github.com/torch/cutorch)
-- [cunn](https://github.com/torch/cunn)
+- Python2 >= 2.7
+- Python3 >= 3.5
 
 The Torch/Lua dependencies can be installed using [luarocks](http://luarocks.org). For example:
 
