@@ -2,8 +2,8 @@ Hierarchical Attention Model for Question Answering
 ===============================================
 
 An implementation of the Hierachical Attention Model and the baselines described in the paper 
-[Hierarchical Attention Model for Question Answering] by Wei Fang, Juei-Yang Hsu, Hung-Yi Lee,
-and Lin-Shan Lee.
+[Hierarchical Attention Model for Improved Comprehension of Spoken Content](https://128.84.21.199/abs/1608.07775)
+by Wei Fang, Juei-Yang Hsu, Hung-Yi Lee, and Lin-Shan Lee.
 
 ## Requirements
 
