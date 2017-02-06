@@ -52,6 +52,6 @@ for q_dir in query_dir_ls:
     parentpath = os.path.join(q_dir,'query_sep_dparents')
 
     tokenize_flag = '-tokenize - '
-    cmd = ('java -cp %s DependencyParse -tokpath %s -parentpath %s -relpath .jizz %s < %s'
+    cmd = ('java -cp %s DependencyParse -tokpath %s -parentpath %s -relpath .trash %s < %s'
         % (classpath, tokpath, parentpath, tokenize_flag, os.path.join(q_dir,'queries_sep')))
     os.system(cmd)

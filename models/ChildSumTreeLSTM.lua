@@ -8,8 +8,8 @@ local ChildSumTreeLSTM, parent = torch.class('HierAttnModel.ChildSumTreeLSTM', '
 
 function ChildSumTreeLSTM:__init(config)
     parent.__init(self, config)
-    self.cuda = config.cuda
-    if self.cuda then
+    self.use_cuda = config.cuda
+    if self.use_cuda then
         self.mem_zeros = torch.zeros(self.mem_dim):cuda()
     else
         self.mem_zeros = torch.zeros(self.mem_dim)
@@ -55,7 +55,7 @@ function ChildSumTreeLSTM:new_composer()
 	h = nn.CMulTable(){o, nn.Tanh()(c)}
 
     local composer = nn.gModule({input, child_c, child_h}, {c, h})
-    if self.cuda then
+    if self.use_cuda then
         composer = composer:cuda()
     end
     if self.composer ~= nil then
@@ -67,7 +67,7 @@ end
 function ChildSumTreeLSTM:new_output_module()
     if self.output_module_fn == nil then return nil end
     local output_module = self.output_module_fn()
-    if self.cuda then
+    if self.use_cuda then
         output_module = output_module:cuda()
     end
     if self.output_module ~= nil then
@@ -157,7 +157,7 @@ end
 function ChildSumTreeLSTM:get_child_states(node)
     local child_c, child_h
     if node.num_children == 0 then
-        if self.cuda then
+        if self.use_cuda then
             child_c = torch.zeros(1, self.mem_dim):cuda()
             child_h = torch.zeros(1, self.mem_dim):cuda()
         else
@@ -165,7 +165,7 @@ function ChildSumTreeLSTM:get_child_states(node)
             child_h = torch.zeros(1, self.mem_dim)
         end
     else
-        if self.cuda then
+        if self.use_cuda then
             child_c = torch.CudaTensor(node.num_children, self.mem_dim)
             child_h = torch.CudaTensor(node.num_children, self.mem_dim)
         else

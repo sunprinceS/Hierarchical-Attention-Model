@@ -132,7 +132,7 @@ local model = model_class{
     sim             = args.similarity,
     att_norm        = args.attnorm,
 	internal_dim    = args.internal,
-	memory_size     = mem_size,
+	mem_size     = mem_size,
 	hops            = args.hops,
 	--word embedding
     emb_vecs        = vecs,
@@ -188,7 +188,7 @@ for i = 1, num_epochs do
             sim             = args.similarity,
             att_norm        = args.attnorm,
             internal_dim    = args.internal,
-            memory_size     = mem_size,
+            mem_size     = mem_size,
             hops            = args.hops,
             --word embedding
             emb_vecs        = vecs,

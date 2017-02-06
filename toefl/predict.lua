@@ -71,31 +71,6 @@ local data_dir = string.format('data/toefl/%s_trans/',args.task)
 -- load vocab
 local vocab = HierAttnModel.Vocab('data/toefl/manual_trans/vocab-cased.txt') -- whole vocab
 
--- load embeddings
-print('loading word embeddings')
-local emb_dir = 'data/glove/'
-local emb_prefix = emb_dir .. 'glove.840B'
-local emb_vocab, emb_vecs = HierAttnModel.read_embedding(emb_prefix .. '.vocab', emb_prefix .. '.300d.th')
-local emb_dim = emb_vecs:size(2)
-
--- use only vectors in vocabulary (not necessary, but gives faster training)
-local num_unk = 0
-local vecs = torch.Tensor(vocab.size, emb_dim)
-for i = 1, vocab.size do
-	local w = string.gsub(vocab:token(i), '\\', '')  --remove escape characters
-	if emb_vocab:contains(w) then
-		vecs[i] = emb_vecs[emb_vocab:index(w)]
-	else
-		num_unk = num_unk + 1
-		vecs[i]:uniform(-0.05, 0.05)
-	end
-end
-
-print('unk count = ' .. num_unk)
-emb_vocab = nil
-emb_vecs = nil
-collectgarbage()
-
 -- load datasets
 local num_choices = 4
 print('loading datasets')

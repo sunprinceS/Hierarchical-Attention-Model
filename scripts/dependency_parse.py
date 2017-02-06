@@ -26,6 +26,6 @@ for dirpath in dir_ls:
     parentpath = os.path.join(dirpath,'sents_'+sys.argv[1]+'_dparents')
 
     tokenize_flag = '-tokenize - '
-    cmd = ('java -cp %s DependencyParse -tokpath %s -parentpath %s -relpath 12 %s < %s'
+    cmd = ('java -cp %s DependencyParse -tokpath %s -parentpath %s -relpath .trash2 %s < %s'
         % (classpath, tokpath, parentpath, tokenize_flag, os.path.join(dirpath,'sents_'+sys.argv[1])))
     os.system(cmd)

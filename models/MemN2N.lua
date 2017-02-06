@@ -15,7 +15,7 @@ function MemN2N:__init(config)
 	self.sim = config.sim
 	self.att_norm = config.att_norm
 	self.train = false
-    self.cuda = config.cuda
+    self.use_cuda = config.cuda
 
 	-- memnn module
 	self.memnn_module = self:new_memnn_module(915)
@@ -63,7 +63,7 @@ function MemN2N:new_memnn_module(mem_size)
 	local mem_out = inputs[self.hops+1]
 	--local mem_out = nn.Linear(self.internal_dim,self.mem_dim)(inputs[self.hops+1])
     local memnn_module = nn.gModule({mem_in, query_in},{mem_out})
-    if self.cuda then
+    if self.use_cuda then
         memnn_module = memnn_module:cuda()
     end
     if self.memnn_module ~= nil then

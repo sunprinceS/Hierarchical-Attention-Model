@@ -10,7 +10,7 @@ function HierAttnModelToefl:__init(config)
 	self.num_choices    = 4
 	self.mem_dim        = config.mem_dim           or 75 --TreeLSTM memory dimension
 	self.internal_dim   = config.internal_dim      or 75 --MemN2N memory dimension
-	self.mem_size       = config.memory_size       or 915 -- 915 has been tested
+	self.mem_size       = config.mem_size       or 915 -- 915 has been tested
 	self.lr             = config.lr                or 1e-2
 	self.batch_size     = config.batch_size        or 10
 	self.reg            = config.reg               or 1e-4
@@ -398,6 +398,7 @@ function HierAttnModelToefl:print_config()
     printf('%-25s = %.2e\n', 'regularization strength', self.reg)
     printf('%-25s = %d\n',   'hops', self.hops)
     printf('%-25s = %s\n',   'dropout', tostring(self.dropout))
+    printf('%-25s = %s\n',   'attention level', self.level)
     printf('%-25s = %s\n',   'attention similarity', self.sim)
     printf('%-25s = %s\n',   'attention normalization', self.att_norm)
     printf('%-25s = %d\n',   'word vector dim', self.emb_dim)
